@@ -6,30 +6,18 @@ Install needed tools:
 
 ## Installation process
 
-1. Clone the repository to your local machine.
-2. Open you IDE or Code Editor and navigate to the project folder.
-3. Install the dependencies by running the following command:
+1. Clone the repository to VM that should monitor the processes.
+2. Navigate to folder's root and run:
 
 ```bash
-yarn install
+docker compose up
 ```
 
 ## Run the project
 
-1. Run the project by running the following command:
-
-```bash
-yarn dev
-```
-
-2. Open your browser and navigate to `http://localhost:3000/` to see the project running.
+1. Navigate to http://localhost:3000/ and login into the Grafana:
 
 ## Important notes
 
-Use ESLint, Stylelint and Prettier to keep the code clean and consistent.
-
-```bash
-yarn lint
-yarn stylelint
-yarn prettier
-```
+1. _prometheus.yml_ file should contain all VMs that are used in staging and production, scrape Node Exporter and cAdvisor metrics from ports.
+2. Configure regular backups for data using scripts in _backup-scripts_ folder.
