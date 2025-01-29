@@ -1,20 +1,23 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+## Pre-Installation process
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+Install needed tools:
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+1. Docker from [Docker Official Page](https://docs.docker.com/engine/install/). Any version above 27.4.0 will do.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Installation process
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+1. Clone the repository to VM that should monitor the processes.
+2. Navigate to folder's root and run:
+
+```bash
+docker compose up
+```
+
+## Run the project
+
+1. Navigate to http://localhost:3000/ and login into the Grafana:
+
+## Important notes
+
+1. _prometheus.yml_ file should contain all VMs that are used in staging and production, scrape Node Exporter and cAdvisor metrics from ports.
+2. Configure regular backups for data using scripts in _backup-scripts_ folder.
