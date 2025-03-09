@@ -7,7 +7,29 @@ Install needed tools:
 ## Installation process
 
 1. Clone the repository to VM that should monitor the processes.
-2. Navigate to folder's root and run:
+2. Create prometheus.yml file:
+
+```bash
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "mini-pc-node"
+    static_configs:
+      - targets: ["node-exporter:9100"]
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["prometheus:9090"]
+
+  - job_name: "cadvisor"
+    static_configs:
+      - targets: ["cadvisor:8080"]
+
+# Add other targets from VMs
+```
+
+3. Navigate to folder's root and run:
 
 ```bash
 docker compose up
@@ -15,9 +37,9 @@ docker compose up
 
 ## Run the project
 
-1. Navigate to http://localhost:3000/ and login into the Grafana:
+Navigate to http://localhost:80 and login into the Grafana
 
 ## Important notes
 
-1. _prometheus.yml_ file should contain all VMs that are used in staging and production, scrape Node Exporter and cAdvisor metrics from ports.
+1. _prometheus.yml_ file should contain all VMs that are used in staging and production, scrape Node Exporter and cadvisor metrics from ports.
 2. Configure regular backups for data using scripts in _backup-scripts_ folder.
